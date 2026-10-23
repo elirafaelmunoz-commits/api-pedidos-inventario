@@ -1,0 +1,27 @@
+@baseUrl = http://localhost:5001
+
+### Consultar productos
+GET {{baseUrl}}/api/productos
+Accept: application/json
+
+### Crear un pedido válido
+POST {{baseUrl}}/api/pedidos
+Content-Type: application/json
+
+{
+  "items": [
+    { "productoId": 1, "cantidad": 1 },
+    { "productoId": 3, "cantidad": 1 }
+  ]
+}
+
+### Probar stock insuficiente y rollback
+POST {{baseUrl}}/api/pedidos
+Content-Type: application/json
+
+{
+  "items": [
+    { "productoId": 1, "cantidad": 1 },
+    { "productoId": 2, "cantidad": 999 }
+  ]
+}
